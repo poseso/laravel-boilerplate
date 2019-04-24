@@ -6,13 +6,21 @@ use Illuminate\Database\Migrations\Migration;
 class CreateSettingsTable extends Migration
 {
     protected $conn;
+
     protected $table;
+
     protected $key;
+
     protected $value;
+
     protected $scope;
+
     protected $morphTable;
+
     protected $morphEntity;
+
     protected $morphKey;
+
     protected $morphValue;
 
     /**
@@ -35,8 +43,6 @@ class CreateSettingsTable extends Migration
 
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -59,8 +65,6 @@ class CreateSettingsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {
