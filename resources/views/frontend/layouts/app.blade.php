@@ -41,5 +41,10 @@
         @stack('after-scripts')
 
         @include('includes.partials.ga')
+        <script>
+            $(document).ready(function() {
+                $('div.alert').not('.alert-danger, .alert-important, .alert-warning, .alert-info').delay(6000).slideUp(500);
+            });
+        </script>
     </body>
 </html>
