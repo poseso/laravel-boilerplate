@@ -4,6 +4,7 @@ namespace App\Models\Auth;
 
 use App\Models\Traits\Uuid;
 use OwenIt\Auditing\Auditable;
+use Poseso\Settings\Traits\HasSettings;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -16,7 +17,8 @@ use OwenIt\Auditing\Contracts\Auditable as AuditableInterface;
  */
 class BaseUser extends Authenticatable implements AuditableInterface
 {
-    use Auditable,
+    use HasSettings,
+        Auditable,
         HasRoles,
         Notifiable,
         SendUserPasswordReset,
@@ -93,5 +95,20 @@ class BaseUser extends Authenticatable implements AuditableInterface
      */
     protected $appends = [
         'full_name',
+        'settings',
+    ];
+
+    /**
+     * Protected Default Settings.
+     *
+     * @var array
+     */
+    protected $settingsConfig = [
+        'default' => [
+            'timezone' => 'America/Santo_Domingo',
+            'language' => 'es',
+            'dateformat' => 'd-m-Y',
+            'timeformat' => 'g:i A',
+        ],
     ];
 }

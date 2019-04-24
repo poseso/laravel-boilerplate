@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
+use Settings;
 use Illuminate\Http\Request;
 use App\Helpers\Auth\AuthHelper;
 use App\Exceptions\GeneralException;
@@ -56,6 +57,7 @@ class LoginController extends Controller
 
     /**
      * Get the failed login response instance.
+     * @throws ValidationException
      */
     protected function sendFailedLoginResponse()
     {
@@ -71,14 +73,14 @@ class LoginController extends Controller
      */
     public function redirectPath()
     {
-//        $user = Auth::user();
-//        $settings = Settings::all();
-//
-//        if (! empty($settings)) {
-//            Settings::scope($user)->set('timezone', $settings['timezone']);
-//        } else {
-//            Settings::scope($user)->set('timezone', $user->settings['timezone']);
-//        }
+        $user = Auth::user();
+        $settings = Settings::all();
+
+        if (! empty($settings)) {
+            Settings::scope($user)->set('timezone', $settings['timezone']);
+        } else {
+            Settings::scope($user)->set('timezone', $user->settings['timezone']);
+        }
 
         return route(home_route());
     }
