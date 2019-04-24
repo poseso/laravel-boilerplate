@@ -1,6 +1,7 @@
 ## Laravel 5.8 Kickstart
 
 [![StyleCI](https://styleci.io/repos/183104575/shield?style=plastic)](https://styleci.io/repos/183104575/shield?style=plastic)
+[![CircleCI](https://circleci.com/gh/poseso/laravel-boilerplate.svg?style=svg)](https://circleci.com/gh/poseso/laravel-boilerplate)
 
 ### Introduction
 
