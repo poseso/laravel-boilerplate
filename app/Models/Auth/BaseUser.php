@@ -4,8 +4,8 @@ namespace App\Models\Auth;
 
 use App\Models\Traits\Uuid;
 use OwenIt\Auditing\Auditable;
-use Poseso\Settings\Traits\HasSettings;
 use Spatie\Permission\Traits\HasRoles;
+use Poseso\Settings\Traits\HasSettings;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Auth\Traits\SendUserPasswordReset;

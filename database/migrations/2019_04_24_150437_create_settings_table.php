@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateSettingsTable extends Migration
 {
@@ -9,7 +9,7 @@ class CreateSettingsTable extends Migration
     protected $table;
     protected $key;
     protected $value;
-	protected $scope;
+    protected $scope;
     protected $morphTable;
     protected $morphEntity;
     protected $morphKey;
@@ -20,17 +20,17 @@ class CreateSettingsTable extends Migration
      */
     public function __construct()
     {
-        $this->conn  = config('settings.stores.database.connection');
+        $this->conn = config('settings.stores.database.connection');
 
         $this->table = config('settings.stores.database.names.settings.table');
-        $this->key   = config('settings.stores.database.names.settings.key');
+        $this->key = config('settings.stores.database.names.settings.key');
         $this->value = config('settings.stores.database.names.settings.value');
         $this->scope = config('settings.stores.database.names.settings.scope');
 
-        $this->morphTable  = config('settings.stores.database.names.settings_models.table');
+        $this->morphTable = config('settings.stores.database.names.settings_models.table');
         $this->morphEntity = config('settings.stores.database.names.settings_models.entity');
-        $this->morphKey    = config('settings.stores.database.names.settings_models.key');
-        $this->morphValue  = config('settings.stores.database.names.settings_models.value');
+        $this->morphKey = config('settings.stores.database.names.settings_models.key');
+        $this->morphValue = config('settings.stores.database.names.settings_models.value');
     }
 
     /**
@@ -40,23 +40,21 @@ class CreateSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::connection($this->conn)->create($this->table, function(Blueprint $table)
-        {
+        Schema::connection($this->conn)->create($this->table, function (Blueprint $table) {
             $table->string($this->scope);
             $table->string($this->key);
             $table->text($this->value)->nullable();
             $table->primary([$this->scope, $this->key]);
         });
 
-        Schema::connection($this->conn)->create($this->morphTable, function(Blueprint $table)
-        {
+        Schema::connection($this->conn)->create($this->morphTable, function (Blueprint $table) {
             $table->morphs($this->morphEntity);
-			$table->string($this->morphKey);
-			$table->text($this->morphValue)->nullable();
+            $table->string($this->morphKey);
+            $table->text($this->morphValue)->nullable();
             $table->primary([$this->morphEntity.'_id', $this->morphEntity.'_type', $this->morphKey]);
         });
 
-		app('settings')->clearCache();
+        app('settings')->clearCache();
     }
 
     /**
