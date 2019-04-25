@@ -17,7 +17,7 @@
                 @lang('menus.backend.sidebar.system')
             </li>
 
-            @if ($logged_in_user->isAdmin())
+            {{--@if ($logged_in_user->isAdmin())--}}
                 <li class="nav-item nav-dropdown {{
                     active_class(Active::checkUriPattern('admin/auth*'), 'open')
                 }}">
@@ -53,7 +53,7 @@
                         </li>
                     </ul>
                 </li>
-            @endif
+            {{--@endif--}}
 
             <li class="divider"></li>
 

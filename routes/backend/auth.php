@@ -14,7 +14,7 @@ Route::group([
     'prefix' => 'auth',
     'as' => 'auth.',
     'namespace' => 'Auth',
-    'middleware' => 'role:'.config('access.users.admin_role'),
+   // 'middleware' => 'role:'.config('access.users.admin_role'),
 ], function () {
     // User Management
     Route::group(['namespace' => 'User'], function () {
@@ -23,7 +23,7 @@ Route::group([
         Route::get('user/deleted', [UserStatusController::class, 'getDeleted'])->name('user.deleted');
 
         // User CRUD
-        Route::get('user', [UserController::class, 'index'])->name('user.index');
+        Route::get('user', [UserController::class, 'index'])->name('user.index')->middleware('permission:view backend');
         Route::get('user/create', [UserController::class, 'create'])->name('user.create');
         Route::post('user', [UserController::class, 'store'])->name('user.store');
 
