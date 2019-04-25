@@ -26,6 +26,7 @@ return [
         ],
         'hide' => 'Ocultar',
         'inactive' => 'Inactivo',
+        'more' => 'Más',
         'none' => 'Ningúno',
         'show' => 'Mostrar',
         'toggle_navigation' => 'Abrir/Cerrar menú de navegación',

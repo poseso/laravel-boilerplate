@@ -24,7 +24,10 @@ class PermissionRoleTableSeeder extends Seeder
         $user = Role::create(['name' => config('access.users.default_role')]);
 
         // Create Permissions
-        $permissions = ['view backend'];
+        $permissions = [
+            'view backend',
+            'view users'
+        ];
 
         foreach ($permissions as $permission) {
             Permission::create(['name' => $permission]);
