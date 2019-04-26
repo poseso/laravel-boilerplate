@@ -23,7 +23,6 @@ trait UserMethod
         return ! app('session')->has(config('access.socialite_session_name'));
     }
 
-
     /**
      * @param bool $size
      * @return bool|\Illuminate\Contracts\Routing\UrlGenerator|mixed|string
