@@ -203,6 +203,7 @@ return [
             'new_password_confirmation' => 'Confirmación de la nueva contraseña',
             'timezone' => 'Zona Horaria',
             'language' => 'Lenguaje',
+            'username_or_password' => 'Usuario o Correo Electrónico',
         ],
     ],
 ];

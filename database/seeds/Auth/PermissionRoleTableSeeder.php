@@ -26,7 +26,10 @@ class PermissionRoleTableSeeder extends Seeder
         // Create Permissions
         $permissions = [
             'view backend',
-            'view users'
+            'view users',
+            'create users',
+            'edit users',
+            'delete users'
         ];
 
         foreach ($permissions as $permission) {
@@ -37,7 +40,7 @@ class PermissionRoleTableSeeder extends Seeder
         $admin->givePermissionTo(Permission::all());
 
         // Assign Permissions to other Roles
-        $executive->givePermissionTo('view backend');
+        $executive->givePermissionTo(['view backend', 'view users']);
 
         $this->enableForeignKeys();
     }

@@ -23,10 +23,9 @@ trait UserMethod
         return ! app('session')->has(config('access.socialite_session_name'));
     }
 
+
     /**
      * @param bool $size
-     *
-     * @throws \Illuminate\Container\EntryNotFoundException
      * @return bool|\Illuminate\Contracts\Routing\UrlGenerator|mixed|string
      */
     public function getPicture($size = false)

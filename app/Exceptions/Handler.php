@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Session\TokenMismatchException;
 use Spatie\Permission\Exceptions\UnauthorizedException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -56,7 +57,13 @@ class Handler extends ExceptionHandler
         if ($exception instanceof UnauthorizedException) {
             return redirect()
                 ->route(home_route())
-                ->withFlashDanger(__('auth.general_error'));
+                ->withFlashDanger(__('No está autorizado para acceder a esta sección..'));
+        }
+
+        if ($exception instanceof TokenMismatchException) {
+            return redirect()
+                ->route('frontend.auth.login')
+                ->withFlashDanger(__('Su sesión ha expirado. Favor iniciar sesión nuevamente.'));
         }
 
         return parent::render($request, $exception);
