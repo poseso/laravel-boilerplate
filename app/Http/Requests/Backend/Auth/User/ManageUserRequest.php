@@ -22,7 +22,6 @@ class ManageUserRequest extends FormRequest
             case 'admin.auth.user.index':
             case 'admin.auth.user.show': {
                 return Auth::user()->can('view users');
-                //return checkACL('users', 'read');
             }
             case 'admin.auth.user.create':
             case 'admin.auth.user.login-as':
@@ -31,7 +30,6 @@ class ManageUserRequest extends FormRequest
             case 'admin.auth.user.unconfirm':
             case 'admin.auth.user.store': {
                 return Auth::user()->can('create users');
-                //return checkACL('users', 'create');
             }
             case 'admin.auth.user.edit':
             case 'admin.auth.user.update':
@@ -52,8 +50,6 @@ class ManageUserRequest extends FormRequest
 
             default:return false;
         }
-        //return true;
-        //return $this->user()->isAdmin();
     }
 
     /**
