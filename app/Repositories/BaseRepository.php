@@ -3,8 +3,8 @@
 namespace App\Repositories;
 
 use App\Exceptions\GeneralException;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class BaseRepository.
@@ -120,7 +120,7 @@ abstract class BaseRepository implements RepositoryContract
      *
      * @return int
      */
-    public function count() : int
+    public function count(): int
     {
         return $this->model->count();
     }
@@ -181,7 +181,7 @@ abstract class BaseRepository implements RepositoryContract
      * @throws \Exception
      * @return bool|null
      */
-    public function deleteById($id) : bool
+    public function deleteById($id): bool
     {
         $this->unsetClauses();
 
@@ -195,7 +195,7 @@ abstract class BaseRepository implements RepositoryContract
      *
      * @return int
      */
-    public function deleteMultipleById(array $ids) : int
+    public function deleteMultipleById(array $ids): int
     {
         return $this->model->destroy($ids);
     }

@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputArgument;
 
 abstract class AppGeneratorCommand extends Command

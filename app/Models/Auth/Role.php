@@ -2,11 +2,11 @@
 
 namespace App\Models\Auth;
 
-use OwenIt\Auditing\Auditable;
-use App\Models\Auth\Traits\Method\RoleMethod;
-use Spatie\Permission\Models\Role as SpatieRole;
 use App\Models\Auth\Traits\Attribute\RoleAttribute;
+use App\Models\Auth\Traits\Method\RoleMethod;
+use OwenIt\Auditing\Auditable;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use Spatie\Permission\Models\Role as SpatieRole;
 
 /**
  * Class Role.

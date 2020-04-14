@@ -2,9 +2,9 @@
 
 // @var $factory \Illuminate\Database\Eloquent\Factory
 
+use App\Models\Auth\User;
 use Faker\Generator;
 use Ramsey\Uuid\Uuid;
-use App\Models\Auth\User;
 
 /*
 |--------------------------------------------------------------------------
