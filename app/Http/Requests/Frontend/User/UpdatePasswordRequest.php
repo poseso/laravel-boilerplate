@@ -4,8 +4,8 @@ namespace App\Http\Requests\Frontend\User;
 
 use App\Rules\Auth\ChangePassword;
 use App\Rules\Auth\UnusedPassword;
-use Illuminate\Foundation\Http\FormRequest;
 use DivineOmega\LaravelPasswordExposedValidationRule\PasswordExposed;
+use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * Class UpdatePasswordRequest.

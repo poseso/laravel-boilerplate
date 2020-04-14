@@ -2,13 +2,13 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use App\Console\Commands\AppModelCommand;
-use App\Console\Commands\AppScopeCommand;
-use App\Console\Commands\AppMethodCommand;
 use App\Console\Commands\AppAttributeCommand;
-use App\Console\Commands\AppRepositoryCommand;
+use App\Console\Commands\AppMethodCommand;
+use App\Console\Commands\AppModelCommand;
 use App\Console\Commands\AppRelationshipCommand;
+use App\Console\Commands\AppRepositoryCommand;
+use App\Console\Commands\AppScopeCommand;
+use Illuminate\Support\ServiceProvider;
 
 class GeneratorServiceProvider extends ServiceProvider
 {

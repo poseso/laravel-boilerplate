@@ -2,22 +2,22 @@
 
 namespace App\Repositories\Backend\Auth;
 
-use App\Models\Auth\User;
-use Illuminate\Support\Facades\DB;
-use App\Exceptions\GeneralException;
-use App\Repositories\BaseRepository;
-use App\Events\Backend\Auth\User\UserCreated;
-use App\Events\Backend\Auth\User\UserUpdated;
-use App\Events\Backend\Auth\User\UserRestored;
 use App\Events\Backend\Auth\User\UserConfirmed;
-use Illuminate\Pagination\LengthAwarePaginator;
+use App\Events\Backend\Auth\User\UserCreated;
 use App\Events\Backend\Auth\User\UserDeactivated;
-use App\Events\Backend\Auth\User\UserReactivated;
-use App\Events\Backend\Auth\User\UserUnconfirmed;
 use App\Events\Backend\Auth\User\UserPasswordChanged;
-use App\Notifications\Backend\Auth\UserAccountActive;
 use App\Events\Backend\Auth\User\UserPermanentlyDeleted;
+use App\Events\Backend\Auth\User\UserReactivated;
+use App\Events\Backend\Auth\User\UserRestored;
+use App\Events\Backend\Auth\User\UserUnconfirmed;
+use App\Events\Backend\Auth\User\UserUpdated;
+use App\Exceptions\GeneralException;
+use App\Models\Auth\User;
+use App\Notifications\Backend\Auth\UserAccountActive;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use App\Repositories\BaseRepository;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class UserRepository.
@@ -35,7 +35,7 @@ class UserRepository extends BaseRepository
     /**
      * @return mixed
      */
-    public function getUnconfirmedCount() : int
+    public function getUnconfirmedCount(): int
     {
         return $this->model
             ->where('confirmed', false)
@@ -49,7 +49,7 @@ class UserRepository extends BaseRepository
      *
      * @return mixed
      */
-    public function getActivePaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc') : LengthAwarePaginator
+    public function getActivePaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc'): LengthAwarePaginator
     {
         return $this->model
             ->with('roles', 'permissions', 'providers')
@@ -65,7 +65,7 @@ class UserRepository extends BaseRepository
      *
      * @return LengthAwarePaginator
      */
-    public function getInactivePaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc') : LengthAwarePaginator
+    public function getInactivePaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc'): LengthAwarePaginator
     {
         return $this->model
             ->with('roles', 'permissions', 'providers')
@@ -81,7 +81,7 @@ class UserRepository extends BaseRepository
      *
      * @return LengthAwarePaginator
      */
-    public function getDeletedPaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc') : LengthAwarePaginator
+    public function getDeletedPaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc'): LengthAwarePaginator
     {
         return $this->model
             ->with('roles', 'permissions', 'providers')
@@ -97,7 +97,7 @@ class UserRepository extends BaseRepository
      * @throws \Throwable
      * @return User
      */
-    public function create(array $data) : User
+    public function create(array $data): User
     {
         return DB::transaction(function () use ($data) {
             $user = parent::create([
@@ -149,7 +149,7 @@ class UserRepository extends BaseRepository
      * @throws \Throwable
      * @return User
      */
-    public function update(User $user, array $data) : User
+    public function update(User $user, array $data): User
     {
         $this->checkUserByEmail($user, $data['email']);
 
@@ -185,7 +185,7 @@ class UserRepository extends BaseRepository
      * @throws GeneralException
      * @return User
      */
-    public function updatePassword(User $user, $input) : User
+    public function updatePassword(User $user, $input): User
     {
         if ($user->update(['password' => $input['password']])) {
             event(new UserPasswordChanged($user));
@@ -203,7 +203,7 @@ class UserRepository extends BaseRepository
      * @throws GeneralException
      * @return User
      */
-    public function mark(User $user, $status) : User
+    public function mark(User $user, $status): User
     {
         if ($status === 0 && auth()->id() === $user->id) {
             throw new GeneralException(__('exceptions.backend.access.users.cant_deactivate_self'));
@@ -233,7 +233,7 @@ class UserRepository extends BaseRepository
      * @throws GeneralException
      * @return User
      */
-    public function confirm(User $user) : User
+    public function confirm(User $user): User
     {
         if ($user->confirmed) {
             throw new GeneralException(__('exceptions.backend.access.users.already_confirmed'));
@@ -262,7 +262,7 @@ class UserRepository extends BaseRepository
      * @throws GeneralException
      * @return User
      */
-    public function unconfirm(User $user) : User
+    public function unconfirm(User $user): User
     {
         if (! $user->confirmed) {
             throw new GeneralException(__('exceptions.backend.access.users.not_confirmed'));
@@ -298,7 +298,7 @@ class UserRepository extends BaseRepository
      * @throws \Throwable
      * @return User
      */
-    public function forceDelete(User $user) : User
+    public function forceDelete(User $user): User
     {
         if ($user->deleted_at === null) {
             throw new GeneralException(__('exceptions.backend.access.users.delete_first'));
@@ -325,7 +325,7 @@ class UserRepository extends BaseRepository
      * @throws GeneralException
      * @return User
      */
-    public function restore(User $user) : User
+    public function restore(User $user): User
     {
         if ($user->deleted_at === null) {
             throw new GeneralException(__('exceptions.backend.access.users.cant_restore'));

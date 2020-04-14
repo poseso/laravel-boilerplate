@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
-use Illuminate\Http\Request;
-use App\Helpers\Auth\AuthHelper;
-use App\Exceptions\GeneralException;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use App\Helpers\Auth\SocialiteHelper;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;
-use Illuminate\Validation\ValidationException;
+use App\Exceptions\GeneralException;
+use App\Helpers\Auth\AuthHelper;
+use App\Helpers\Auth\SocialiteHelper;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 /**
  * Class LoginController.

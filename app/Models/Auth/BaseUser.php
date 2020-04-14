@@ -2,14 +2,14 @@
 
 namespace App\Models\Auth;
 
-use App\Models\Traits\Uuid;
-use OwenIt\Auditing\Auditable;
-use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Auth\Traits\SendUserPasswordReset;
+use App\Models\Traits\Uuid;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use OwenIt\Auditing\Auditable;
 use OwenIt\Auditing\Contracts\Auditable as AuditableInterface;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * Class User.
